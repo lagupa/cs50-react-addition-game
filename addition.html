@@ -31,7 +31,16 @@
 
             render(){
                 return (
-                    <h1>Hello</h1>
+                    <div>
+                        <h1>{this.state.num1} + {this.state.num2}</h1>
+                        <h2>
+                            <input placeholder="What's the answer?" type="text"/>
+                            <button>Check Answer</button>
+                        </h2>
+                        <h2>
+                            Score: {this.state.score}
+                        </h2>
+                    </div>
                 )
             }
         }
