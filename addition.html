@@ -34,15 +34,71 @@
                     <div>
                         <h1>{this.state.num1} + {this.state.num2}</h1>
                         <h2>
-                            <input placeholder="What's the answer?" type="text"/>
-                            <button>Check Answer</button>
+                            <input onKeyPress={this.runAnswer} onChange={this.handleChange} value={this.state.response} placeholder="What's the answer?" type="text"/>
+                            <button onClick={this.runAnswerbtn}>Check Answer</button>
                         </h2>
                         <h2>
                             Score: {this.state.score}
                         </h2>
+                        UserGuess:{this.state.response}
                     </div>
                 )
             }
+
+            handleChange=(e)=>{
+                this.setState({
+                    response:e.target.value
+                })
+            }
+
+            runAnswer=(e)=>{
+                if (e.key ==="Enter"){
+                    let answer = parseInt(this.state.response)
+                    if (answer===this.state.num1+this.state.num2){
+                        //Correct Answer
+                        this.setState(state=>({
+                            num1:Math.ceil(Math.random()*10),
+                            num2:Math.ceil(Math.random()*10),
+                            score:this.state.score + 1 ,
+                            response: this.state.response=""
+                        }))
+                    }else{
+                        //Wrong Answer
+                        this.setState(state=>({
+                            //num1:Math.ceil(Math.random()*10),
+                            //num2:Math.ceil(Math.random()*10),
+                            //score:this.state.score + 1 ,
+                            response: this.state.response=""
+                        }))
+
+                    }
+                }
+            }
+            runAnswerbtn=(e)=>{
+                
+                    let answer = parseInt(this.state.response)
+                    if (answer===this.state.num1+this.state.num2){
+                        //Correct Answer
+                        this.setState(state=>({
+                            num1:Math.ceil(Math.random()*10),
+                            num2:Math.ceil(Math.random()*10),
+                            score:this.state.score + 1 ,
+                            response: this.state.response=""
+                        }))
+                    }else{
+                        //Wrong Answer
+                        this.setState(state=>({
+                            //num1:Math.ceil(Math.random()*10),
+                            //num2:Math.ceil(Math.random()*10),
+                            //score:this.state.score + 1 ,
+                            response: this.state.response=""
+                        }))
+
+                    }
+                
+            }
+
+
         }
 
 
