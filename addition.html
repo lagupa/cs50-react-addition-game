@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>React Todo App</title>
+    <title>React CS50 Addition Game</title>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
 </head>
 
 <body>
-    <h1>Simple React Todo App</h1>
+    <h1>React CS50 Addition Game</h1>
     <div id="app"></div>
 
     <script type="text/babel">
@@ -30,6 +30,14 @@
             }
 
             render(){
+                if (this.state.score===5){
+                    return this.renderWin();
+                }else{
+                    return this.renderProblem();
+                }
+            }
+
+            renderProblem(){
                 return (
                     <div>
                         <h1>{this.state.num1} + {this.state.num2}</h1>
@@ -43,6 +51,10 @@
                         UserGuess:{this.state.response}
                     </div>
                 )
+            }
+
+            renderWin(){
+                return(<h1> Congratulations, you win!</h1>)
             }
 
             handleChange=(e)=>{
